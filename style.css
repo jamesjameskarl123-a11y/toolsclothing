@@ -1,0 +1,49 @@
+#customerName {
+    display: inline-block;
+    max-width: 180px;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #00eaff,
+        0 0 20px #00eaff,
+        0 0 35px #008cff;
+    animation: nameRun 3s linear infinite;
+}
+
+#customerName::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -100%;
+    width: 30%;
+    height: 160%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.9),
+        #00eaff,
+        transparent
+    );
+
+    transform: skewX(-25deg);
+
+    filter: blur(3px) drop-shadow(0 0 12px #00eaff);
+
+    animation: lightningSweep 2s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes nameRun {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
