@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07090f">
+<title>kj clothing— karl james Design Studio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+:root{
+  --bg:#05070c;--panel:rgba(10,13,21,.82);--panel2:#0d111b;--line:#2a3040;
+  --text:#f8f9ff;--muted:#8f98ad;--purple:#8b5cf6;--cyan:#22d3ee;--green:#34d399;
+  --shirt:#11131a;--accent:#8b5cf6;--shadow:0 28px 90px rgba(0,0,0,.52);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:#05070c;color:var(--text);overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-5;
+  background:
+    radial-gradient(circle at 12% 10%,rgba(139,92,246,.24),transparent 27%),
+    radial-gradient(circle at 86% 16%,rgba(34,211,238,.12),transparent 25%),
+    radial-gradient(circle at 75% 90%,rgba(52,211,153,.09),transparent 24%),
+    linear-gradient(125deg,#141022 0%,#070a11 43%,#06151a 100%);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-4;opacity:.22;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,rgb(4, 0, 0) 0%,rgb(2, 0, 0) 58%,transparent 100%);
+}
+.wallpaper{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden;
+  opacity:.34;
+}
+.wallpaper:before,.wallpaper:after{
+  content:"";position:absolute;width:48vw;height:48vw;border:1px solid rgba(255,255,255,.055);
+  border-radius:46% 54% 62% 38%;transform:rotate(18deg);
+}
+.wallpaper:before{left:-17vw;top:22vh;box-shadow:0 0 100px rgba(139,92,246,.12)}
+.wallpaper:after{right:-20vw;top:-10vh;box-shadow:0 0 120px rgba(34,211,238,.1);transform:rotate(-23deg)}
+.wallpaper span{
+  position:absolute;color:rgba(255,255,255,.035);font-size:clamp(70px,13vw,210px);
+  font-weight:1000;letter-spacing:-.08em;white-space:nowrap;transform:rotate(-12deg);
+}
+.wallpaper span:nth-child(1){left:-3vw;bottom:3vh}.wallpaper span:nth-child(2){right:-8vw;top:35vh;transform:rotate(14deg)}
+.container{width:min(1420px,94vw);margin:auto}
+header{
+  height:78px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:20;
+  background:rgba(5,7,12,.55);
+}
+.brand{display:flex;gap:12px;align-items:center;font-weight:900;letter-spacing:.5px}
+.logo{
+  width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#b69cff,#6d28d9);
+  display:grid;place-items:center;box-shadow:0 10px 35px rgba(124,58,237,.38)
+}
+.logo span{font-size:13px}.brand small{display:block;color:var(--muted);font-weight:600;font-size:8px;letter-spacing:1.5px;margin-top:2px}
+.topbar{display:flex;align-items:center;gap:10px}.top-status{font-size:10px;color:var(--muted)}
+.save-pill{
+  display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #2a3141;border-radius:99px;
+  background:rgba(11,15,24,.8);font-size:8px;color:#b8c0d2;transition:.25s
+}
+.save-dot{width:7px;height:7px;border-radius:50%;background:#64748b;box-shadow:0 0 0 3px rgba(100,116,139,.1)}
+.save-pill.saving .save-dot{background:#fbbf24;box-shadow:0 0 12px rgba(251,191,36,.65)}
+.save-pill.saved .save-dot{background:#34d399;box-shadow:0 0 12px rgba(52,211,153,.55)}
+.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;padding:24px 0 18px}
+.card{
+  background:linear-gradient(180deg,rgba(18,21,33,.9),rgba(7,10,17,.88));
+  border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin:0 0 5px}.sub{font-size:9px;color:var(--muted);margin-bottom:16px}
+label{font-size:9px;color:#b4bbcc;display:block;margin-bottom:7px}
+textarea,input,select{
+  width:100%;background:#090d16;border:1px solid #202738;color:#f4f5fa;border-radius:10px;padding:11px;
+  font:inherit;font-size:11px;outline:none;transition:.2s
+}
+textarea:focus,input:focus,select:focus{border-color:#7c5ce0;box-shadow:0 0 0 3px rgba(124,92,224,.12)}
+textarea{height:80px;resize:vertical}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.swatch{
+  height:36px;border-radius:8px;border:1px solid #2c3345;cursor:pointer;position:relative;
+  transition:.2s;overflow:hidden
+}
+.swatch:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.2),transparent 60%);
+  transform:translateX(-120%);transition:.5s
+}
+.swatch:hover:after{transform:translateX(120%)}
+.swatch:hover,.swatch.active{transform:translateY(-2px);border-color:#c4b5fd;box-shadow:0 9px 25px rgba(139,92,246,.2)}
+.swatch span{position:absolute;left:8px;top:10px;font-size:8px;color:#fff;text-shadow:0 1px 3px #000;z-index:1}
+.options{display:flex;flex-wrap:wrap;gap:7px}.chip{
+  border:1px solid #2a3040;background:#0d111b;color:#bfc5d4;padding:8px 10px;border-radius:8px;
+  font-size:9px;cursor:pointer;transition:.2s
+}
+.chip:hover,.chip.active{border-color:#8b5cf6;background:rgba(139,92,246,.12);color:#fff;transform:translateY(-1px);box-shadow:0 7px 20px rgba(139,92,246,.12)}
+.actions{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-top:14px}
+.btn{
+  border:1px solid #2d3446;background:#111622;color:#f7f7fb;border-radius:9px;padding:10px;font-size:9px;font-weight:800;
+  cursor:pointer;transition:.2s;position:relative;overflow:hidden
+}
+.btn:before{
+  content:"";position:absolute;inset:-50%;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.16),transparent 65%);
+  transform:translateX(-80%);transition:.45s
+}
+.btn:hover:before{transform:translateX(80%)}.btn:hover{transform:translateY(-2px);border-color:#8b5cf6;box-shadow:0 10px 25px rgba(139,92,246,.16)}
+.btn.primary{background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-color:#a78bfa}.btn.upload{border-style:dashed}
+.btn.success{border-color:#245743;background:rgba(52,211,153,.08)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:#0b0f17;border:1px solid #202636;border-radius:9px;padding:10px}.stat b{font-size:16px}.stat span{display:block;color:var(--muted);font-size:8px;margin-top:2px}
+.side-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mini{background:#0b0f17;border:1px solid #202636;border-radius:9px;padding:10px}.mini b{font-size:9px}.mini p{font-size:8px;color:var(--muted);margin:4px 0 0;line-height:1.5}
+.mini button{margin-top:8px;width:100%}
+#fileName{font-size:8px;color:#8991a7;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview{min-height:700px;display:flex;flex-direction:column}
+.preview-head{display:flex;justify-content:space-between;align-items:center;padding:18px 18px 10px}
+.badge{font-size:8px;padding:5px 8px;border:1px solid #2b3445;border-radius:99px;color:#aeb6c8}
+.stage{
+  flex:1;margin:0 18px 12px;border-radius:14px;border:1px solid #242a3a;display:grid;place-items:center;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(139,92,246,.12),transparent 22%),
+    radial-gradient(circle at 50% 70%,rgba(34,211,238,.06),transparent 30%),
+    rgba(6,9,15,.82);
+}
+.stage:before{
+  content:"";position:absolute;inset:0;background:
+    linear-gradient(115deg,transparent 0 46%,rgba(255,255,255,.035) 50%,transparent 54%),
+    radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.32) 100%);
+  pointer-events:none
+}
+.stage .tag{position:absolute;left:12px;top:12px;font-size:8px;color:#9ba4b9;z-index:2}
+.tee-stage{
+  width:320px;height:400px;position:relative;display:flex;align-items:center;justify-content:center;
+  perspective:1400px;z-index:1;
+}
+.tee-float{
+  max-width:100%;max-height:100%;object-fit:contain;border-radius:16px;position:relative;z-index:2;
+  
+  animation:teeFloat 6s ease-in-out infinite;
+  transform-style:preserve-3d;will-change:transform;transition:filter .35s;
+}
+@keyframes teeFloat{
+  0%{transform:translateY(0) rotateY(-9deg) rotateX(5deg) rotateZ(-1.2deg)}
+  25%{transform:translateY(-15px) rotateY(7deg) rotateX(-2deg) rotateZ(1deg)}
+  50%{transform:translateY(-24px) rotateY(-5deg) rotateX(4deg) rotateZ(-1.6deg)}
+  75%{transform:translateY(-11px) rotateY(9deg) rotateX(-3deg) rotateZ(1.2deg)}
+  100%{transform:translateY(0) rotateY(-9deg) rotateX(5deg) rotateZ(-1.2deg)}
+}
+.tee-shadow{
+  position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:210px;height:32px;
+  border-radius:50%;z-index:1;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.55),rgba(0,0,0,0) 72%);
+  animation:teeShadow 6s ease-in-out infinite;
+}
+@keyframes teeShadow{
+  0%{transform:translateX(-50%) scale(1);opacity:.5}
+  50%{transform:translateX(-50%) scale(.72);opacity:.26}
+  100%{transform:translateX(-50%) scale(1);opacity:.5}
+}
+.promptbox{margin:0 18px 18px;background:#0a0e16;border:1px solid #22293a;border-radius:11px;padding:12px}
+.prompt-title{display:flex;justify-content:space-between;font-size:9px;color:#9da6ba;margin-bottom:8px}
+.prompt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;line-height:1.55;color:#d8dced;min-height:58px}
+.history{margin-top:12px;border-top:1px solid #202636;padding-top:10px}
+.history-title{font-size:8px;color:#7f899f;margin-bottom:7px}.history-list{display:flex;gap:6px;overflow:auto;padding-bottom:3px}
+.history-item{flex:0 0 auto;border:1px solid #252d3d;background:#0b0f17;border-radius:7px;padding:6px 8px;font-size:7px;color:#aeb6c8;cursor:pointer}
+.history-item:hover{border-color:#8b5cf6;color:#fff}
+.footer{font-size:8px;color:#687087;text-align:center;padding:6px 0 24px}.hidden{display:none!important}
+.toast{
+  position:fixed;right:22px;bottom:22px;z-index:50;padding:10px 13px;border-radius:10px;
+  background:rgba(13,17,27,.94);border:1px solid #343d52;box-shadow:0 16px 40px rgba(0,0,0,.4);
+  font-size:9px;color:#e7e9f2;transform:translateY(20px);opacity:0;pointer-events:none;transition:.25s
+}
+.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:950px){
+  .layout{grid-template-columns:1fr}.preview{min-height:620px}.actions{grid-template-columns:1fr 1fr}
+  .container{width:92vw}.top-status{display:none}
+}
+@media(max-width:560px){.grid3,.grid2{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(2,1fr)}.garment{transform:scale(.86)}}
+
+/* --- search bar --- */
+.search-wrap{position:relative;display:flex;align-items:center}
+.search-wrap svg{position:absolute;left:10px;width:11px;height:11px;color:#7b8398;pointer-events:none}
+.search-input{
+  width:230px;background:#0a0e17;border:1px solid #262d3f;color:#eef0f8;border-radius:99px;
+  padding:8px 12px 8px 28px;font-size:9px;outline:none;transition:.2s
+}
+.search-input:focus{border-color:#7c5ce0;box-shadow:0 0 0 3px rgba(124,92,224,.14);width:260px}
+.search-empty{font-size:8px;color:#c47a7a;margin-top:6px}
+
+/* --- save photo button --- */
+.save-photo-btn{
+  display:flex;align-items:center;gap:6px;border:1px solid #245743;background:rgba(52,211,153,.1);
+  color:#c9fbe6;border-radius:99px;padding:8px 12px;font-size:9px;font-weight:800;cursor:pointer;transition:.2s;white-space:nowrap
+}
+.save-photo-btn:hover{border-color:#34d399;box-shadow:0 8px 22px rgba(52,211,153,.18);transform:translateY(-1px)}
+
+/* --- ai provider row --- */
+.preview-head{flex-wrap:wrap;gap:10px}
+.head-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ai-row{display:flex;gap:6px}
+.ai-btn{
+  display:flex;align-items:center;gap:5px;border:1px solid #2a3040;background:#0d111b;color:#d7dbe9;
+  border-radius:99px;padding:7px 11px;font-size:9px;font-weight:800;cursor:pointer;transition:.2s
+}
+.ai-btn:hover{border-color:#8b5cf6;background:rgba(139,92,246,.12);color:#fff;transform:translateY(-1px)}
+.ai-btn.chatgpt:hover{border-color:#34d399}
+.ai-btn.gemini:hover{border-color:#4285f4}
+.ai-btn[disabled]{opacity:.55;cursor:wait}
+.gen-status{
+  margin:0 18px 0;font-size:8.5px;color:#9aa3b8;min-height:14px;padding:0 0 2px;transition:.2s
+}
+.gen-status.busy{color:#fbbf24}
+.gen-status.done{color:#34d399}
+.gen-status.error{color:#f87171}
+
+/* --- share --- */
+.share-wrap{position:relative}
+.share-menu{
+  position:absolute;right:0;top:calc(100% + 8px);z-index:30;min-width:170px;
+  background:#0c1019;border:1px solid #2a3141;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  padding:8px;display:none;flex-direction:column;gap:4px
+}
+.share-menu.show{display:flex}
+.share-menu a,.share-menu button{
+  display:flex;align-items:center;gap:8px;text-decoration:none;color:#e6e8f2;font-size:9px;font-weight:700;
+  border:1px solid transparent;background:transparent;border-radius:8px;padding:8px 9px;cursor:pointer;text-align:left;font-family:inherit
+}
+.share-menu a:hover,.share-menu button:hover{background:rgba(139,92,246,.14);border-color:#8b5cf6}
+@media(max-width:950px){.search-input{width:150px}.search-input:focus{width:170px}.head-right{justify-content:flex-start}}
+
+/* ================= 3D SCROLL + SMOKE FX ================= */
+#three-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.72}
+#three-bg canvas{display:block;width:100%;height:100%}
+.reveal{opacity:0;transform:translate3d(0,70px,0) scale(.965);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+.reveal.revealed{opacity:1;transform:none;filter:none;transition:none}
+
+/* ================= EMBROIDERY GENERATOR ================= */
+.embroidery-section{margin:18px 0 28px;padding:22px;background:linear-gradient(180deg,rgba(24,27,34,.96),rgba(10,13,19,.96));border:1px solid #2a3040;border-radius:18px;box-shadow:0 28px 90px rgba(0,0,0,.42)}
+.embroidery-header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.embroidery-header h2{margin:0;font-size:18px}
+.embroidery-badge{font-size:8px;padding:6px 9px;border:1px solid #245743;border-radius:99px;color:#9de8c8;background:rgba(52,211,153,.06)}
+.embroidery-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;margin-top:16px}
+.embroidery-panel,.embroidery-preview{background:#090d16;border:1px solid #202738;border-radius:14px;padding:15px}
+.embroidery-panel h3,.embroidery-preview h3{font-size:11px;margin:0 0 12px}
+.embroidery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.embroidery-grid label{margin-bottom:6px}
+.embroidery-grid input,.embroidery-grid select{font-size:10px}
+.embroidery-colors{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:8px}
+.emb-color{height:34px;border-radius:8px;border:1px solid #2c3345;cursor:pointer;position:relative;transition:.2s}
+.emb-color span{position:absolute;inset:auto 4px 3px;font-size:6px;text-align:center;color:white;text-shadow:0 1px 3px #000}
+.emb-color:hover,.emb-color.active{transform:translateY(-2px);border-color:#fff;box-shadow:0 8px 18px rgba(139,92,246,.22)}
+.emb-actions{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-top:13px}
+.emb-preview-stage{
+min-height:350px;border:1px solid #aeb4bb;border-radius:2px;display:grid;place-items:center;
+position:relative;overflow:hidden;background:#c9c9c9;
+background-image:linear-gradient(rgba(85,85,85,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(85,85,85,.22) 1px,transparent 1px);
+background-size:36px 36px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)
+}
+.emb-preview-stage:before{
+content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);
+background-size:9px 9px;pointer-events:none
+}
+.emb-hoop{
+width:min(96%,560px);height:230px;aspect-ratio:auto;border:1px solid #777;border-radius:0;position:relative;
+display:flex;flex-direction:column;justify-content:center;gap:0;background:transparent;box-shadow:none;z-index:1
+}
+.emb-hoop:before{
+content:"";position:absolute;left:0;right:0;top:22px;height:76px;background:#fff;border:1px solid #777;box-shadow:0 1px 2px rgba(0,0,0,.12)
+}
+.emb-hoop:after{
+content:"";position:absolute;left:0;right:0;bottom:22px;height:76px;background:#fff;border:1px solid #777;box-shadow:0 1px 2px rgba(0,0,0,.12)
+}
+.emb-art{
+position:relative;z-index:2;text-align:center;width:100%;max-width:100%;display:flex;flex-direction:column;
+align-items:center;justify-content:center
+}
+.emb-name{
+font-size:clamp(20px,3.4vw,38px);font-weight:950;letter-spacing:1px;text-transform:none;color:#111!important;
+text-shadow:1px 1px 0 #888,0 0 1px #000;line-height:1.05;max-width:92%;word-break:break-word;padding:0 12px
+}
+.emb-name:after{content:"";display:block;margin:8px auto 0;width:92%;border-bottom:1px dashed #999}
+.emb-hoop .emb-art:before{content:"13";position:absolute;left:6px;top:5px;font:700 13px Arial;color:#555}
+.emb-hoop .emb-art:after{
+content:"100     110     120";position:absolute;right:5px;top:5px;font:700 12px Arial;color:#777;white-space:pre
+}
+.emb-logo-preview{
+max-width:120px;max-height:54px;width:auto;height:auto;margin:0 auto 6px;object-fit:contain;display:none;
+filter:grayscale(1) contrast(1.35)
+}
+.emb-machine-label{
+position:absolute;left:10px;top:8px;z-index:3;font:700 8px/1.2 Arial;color:#555;letter-spacing:.6px;text-transform:uppercase
+}
+.emb-ruler{
+position:absolute;bottom:7px;left:8px;right:8px;z-index:3;display:flex;justify-content:space-between;
+font:700 7px Arial;color:#666;pointer-events:none
+}
+.emb-stitches{font-size:8px;color:#8f98ad;margin-top:10px}
+.emb-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.emb-meta div{padding:8px;border:1px solid #202636;border-radius:8px;background:#0b0f17}
+.emb-meta b{display:block;font-size:10px}.emb-meta span{font-size:7px;color:#778196}
+.emb-file{font-size:8px;color:#8f98ad;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.emb-note{font-size:8px;line-height:1.5;color:#7f899f;margin-top:12px}
+.embroidery-section .btn.emb-primary{background:linear-gradient(135deg,#34d399,#059669);border-color:#6ee7b7}
+
+/* --- Adjustable embroidery canvas --- */
+.emb-controls{margin-top:14px;padding-top:12px;border-top:1px solid #252b38}
+.emb-controls-title{font-size:9px;font-weight:800;color:#d7dbe7;margin-bottom:9px}
+.emb-control-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.emb-control{background:#0b0f17;border:1px solid #202636;border-radius:9px;padding:9px}
+.emb-control label{display:flex;justify-content:space-between;gap:8px;margin:0 0 6px;font-size:8px;color:#aeb6c8}
+.emb-control label b{color:#fff;font-size:8px}
+.emb-control input[type=range]{width:100%;padding:0;border:0;background:transparent;accent-color:#34d399;box-shadow:none}
+.emb-control input[type=number]{padding:8px;font-size:9px}
+.emb-nudge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.emb-nudge-grid button{border:1px solid #293043;background:#111622;color:#dce1ec;border-radius:7px;padding:7px 4px;font-size:8px;cursor:pointer}
+.emb-nudge-grid button:hover{border-color:#34d399;color:#fff}
+.emb-stage-inner{position:absolute;left:7%;right:7%;top:11%;bottom:13%;background:#fff;border:1px solid #777;overflow:hidden;z-index:1}
+.emb-stage-inner:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(80,80,80,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(80,80,80,.18) 1px,transparent 1px);background-size:18px 18px;pointer-events:none}
+.emb-stage-inner:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(80,80,80,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(80,80,80,.1) 1px,transparent 1px);background-size:6px 6px;pointer-events:none}
+.emb-hoop{position:absolute;inset:0;width:auto;height:auto;display:block;background:#fff;border:0;z-index:2;overflow:hidden}
+.emb-hoop:before,.emb-hoop:after{display:none}
+.emb-art{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3}
+.emb-logo-preview{position:absolute;left:50%;top:50%;max-width:none;max-height:none;width:110px;height:auto;margin:0;transform:translate(-50%,-50%);transform-origin:center center;object-fit:contain;display:none;filter:grayscale(1) contrast(1.35)}
+.emb-name{position:absolute;left:50%;top:58%;margin:0;transform:translate(-50%,-50%);font-size:32px;font-weight:950;letter-spacing:1px;text-transform:none;color:#111!important;text-shadow:1px 1px 0 #888,0 0 1px #000;line-height:1.05;max-width:90%;white-space:nowrap;word-break:normal;padding:0}
+.emb-name:after{display:none}
+.emb-dim{position:absolute;z-index:6;pointer-events:none;font:700 8px Arial;color:#444;background:rgba(255,255,255,.78);padding:2px 4px;border-radius:3px}
+.emb-dim-top{left:50%;top:4px;transform:translateX(-50%)}
+.emb-dim-left{left:4px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left top}
+.emb-dim-name{left:50%;bottom:7%;transform:translateX(-50%);font-size:8px}
+.emb-dim-logo{right:4%;top:50%;transform:translateY(-50%)}
+.emb-ruler{bottom:3px;left:7%;right:7%;z-index:7;color:#555}
+.emb-machine-label{left:8px;top:7px;z-index:8;color:#555}
+.emb-preview-stage{min-height:390px;background:#c9c9c9}
+.emb-quick-note{font-size:7px;color:#7f899f;margin-top:7px;line-height:1.45}
+@media(max-width:560px){.emb-control-grid{grid-template-columns:1fr}.emb-name{font-size:24px}}
+@media(max-width:950px){.embroidery-layout{grid-template-columns:1fr}}
+@media(max-width:560px){.embroidery-grid{grid-template-columns:1fr}.embroidery-colors{grid-template-columns:repeat(3,1fr)}.emb-actions{grid-template-columns:1fr}.emb-meta{grid-template-columns:repeat(2,1fr)}}
+/* ================= EMBROIDERY PRO EDITOR ================= */
+.emb-layout-tabs{display:flex;gap:7px;margin:0 0 12px}
+.emb-layout-tab{border:1px solid #293043;background:#0d111b;color:#aeb6c8;border-radius:8px;padding:8px 14px;font-size:9px;font-weight:800;cursor:pointer}
+.emb-layout-tab.active{background:rgba(52,211,153,.12);border-color:#34d399;color:#fff}
+.emb-editor-tools{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}
+.emb-tool{background:#0b0f17;border:1px solid #202636;border-radius:9px;padding:9px}
+.emb-tool h4{font-size:8px;margin:0 0 7px;color:#d7dbe7}
+.emb-tool-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.emb-tool button{width:100%;border:1px solid #293043;background:#111622;color:#dce1ec;border-radius:7px;padding:7px 6px;font-size:8px;cursor:pointer}
+.emb-tool button:hover{border-color:#34d399;color:#fff}
+.emb-tool input[type=color]{width:100%;height:30px;border:1px solid #293043;background:#111622;border-radius:7px;padding:2px;cursor:pointer}
+.emb-layer-badge{font-size:7px;color:#7f899f;margin-top:6px}
+.emb-stage-inner{border:0!important;background:#fff;box-shadow:none!important}
+.emb-stage-inner:before{opacity:.65}
+.emb-stage-inner:after{opacity:.35}
+.emb-hoop{border:0!important;outline:0!important}
+.emb-art .emb-logo-preview,.emb-art .emb-name{cursor:grab;user-select:none;touch-action:none}
+.emb-art .emb-logo-preview:active,.emb-art .emb-name:active{cursor:grabbing}
+.emb-name-line2{position:absolute!important;left:50%;top:68%;transform:translate(-50%,-50%);margin:0;font-size:24px;font-weight:900;line-height:1.05;white-space:nowrap;max-width:90%;color:#111;text-shadow:1px 1px 0 #888;cursor:grab;user-select:none;touch-action:none}
+.emb-name-line2.hidden{display:none!important}
+.emb-line-label{font-size:7px;color:#7f899f;margin-top:5px}
+.emb-actions{grid-template-columns:2fr 1fr 1fr 1fr!important}
+.emb-actions .folder-save{border-color:#34d399;background:rgba(52,211,153,.08)}
+@media(max-width:560px){.emb-editor-tools{grid-template-columns:1fr}.emb-actions{grid-template-columns:1fr!important}}
+
+
+</style>
+</head>
+<body>
+<canvas id="three-bg" aria-hidden="true"></canvas>
+<div class="wallpaper"><span>KJ</span><span>CLOTHING</span></div>
+<div class="container">
+<header>
+  <div class="brand">
+    <div>KJ Clothing<small>karl james FASHION DESIGN STUDIO</small>
+    <div id="customerName">JAMES KARL</div>
+    </div>
+</div>
+  <div class="topbar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="searchInput" class="search-input" placeholder="Search colors, concepts, styles…">
+    </div>
+    <button class="save-photo-btn" id="savePhoto" title="Save the current mockup image">⇩ Save Photo</button>
+    <div class="top-status">2,000+ concepts • live mockup • auto-save</div>
+    <div class="save-pill saved" id="savePill"><i class="save-dot"></i><span id="saveText">All changes saved</span></div>
+  </div>
+</header>
+
+<main class="layout">
+<section class="card panel reveal reveal-left">
+  <h2>Design Generator</h2>
+  <div class="sub">Build a production-ready clothing prompt. Every change is saved automatically in real time.</div>
+
+  <label>Base prompt</label>
+  <textarea id="base">Premium streetwear graphic for KJ Clothing, bold contemporary typography, print-ready composition.</textarea>
+
+  <div class="grid3">
+    <div><label>Garment</label><select id="garmentType"><option>T-Shirt</option><option>Oversized Tee</option><option>Hoodie</option><option>Long Sleeve</option><option>Varsity Jacket</option><option value="Design Only">Design Only — No T-Shirt</option></select></div>
+    <div><label>Size</label><select id="size"><option>Small</option><option>Medium</option><option selected>Large</option><option>XL</option><option>2XL</option></select></div>
+    <div><label>Placement</label><select id="placement"><option>Center Chest</option><option>Left Chest</option><option>Full Front</option><option>Back Print</option><option>Sleeve</option></select></div>
+  </div>
+
+  <label style="margin-top:14px">Color palette</label>
+  <div class="swatches" id="swatches">
+    <div class="swatch active" data-color="Midnight Black" style="background:#11131a"><span>Black</span></div>
+    <div class="swatch" data-color="Arctic White" style="background:#eee"><span style="color:#111">White</span></div>
+    <div class="swatch" data-color="Electric Blue" style="background:#2864e6"><span>Blue</span></div>
+    <div class="swatch" data-color="Crimson Red" style="background:#d52c40"><span>Red</span></div>
+    <div class="swatch" data-color="Forest Green" style="background:#19704e"><span>Green</span></div>
+    <div class="swatch" data-color="Sand Beige" style="background:#cdb78f"><span style="color:#111">Sand</span></div>
+    <div class="swatch" data-color="Lavender" style="background:#9573d4"><span>Lavender</span></div>
+    <div class="swatch" data-color="Steel Gray" style="background:#454b58"><span>Gray</span></div>
+    <div class="swatch" data-color="Neon Lime" style="background:#a5d63c"><span style="color:#111">Lime</span></div>
+  </div>
+
+  <label style="margin-top:14px">Design concept</label>
+  <div class="options" id="concepts">
+    <button class="chip active">Minimalist</button><button class="chip">Vintage</button><button class="chip">Retro</button>
+    <button class="chip">Collegiate</button><button class="chip">Cyberpunk</button><button class="chip">Luxury</button>
+    <button class="chip">Graffiti</button><button class="chip">Anime</button><button class="chip">Motorsport</button>
+    <button class="chip">Nature</button><button class="chip">Typography</button><button class="chip">Abstract</button>
+  </div>
+  <div class="search-empty hidden" id="searchEmpty">No colors or concepts match your search.</div>
+
+  <div class="grid2" style="margin-top:14px">
+    <div><label>Visual style</label><select id="visual"><option>Bold Graphic</option><option>Clean Minimal</option><option>Photographic</option><option>Editorial</option><option>Airbrush</option><option>3D Chrome</option><option>Hand-drawn</option></select></div>
+    <div><label>Background</label><select id="background"><option>Transparent / print-ready</option><option>Dark cinematic</option><option>Concrete studio</option><option>Urban night</option><option>Clean white studio</option></select></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn primary" id="generate">▶ Generate Design</button>
+    <button class="btn" id="random">✦ Random Idea</button>
+    <button class="btn upload" id="uploadBtn">＋ Upload Image</button>
+    <button class="btn" id="copy">⧉ Copy Prompt</button>
+  </div>
+  <input class="hidden" type="file" id="file" accept="image/*">
+  <div id="fileName"></div>
+
+  <div class="stats reveal">
+    <div class="stat"><b id="ideaNo">001</b><span>current idea</span></div>
+    <div class="stat"><b>2,000</b><span>generated concepts</span></div>
+    <div class="stat"><b id="score">98%</b><span>prompt quality</span></div>
+  </div>
+
+  <div class="side-grid reveal">
+    <div class="mini">
+      <b>AI-ready prompt</b>
+      <p>Use the generated prompt with your preferred image-generation workflow or API endpoint.</p>
+    </div>
+    <div class="mini">
+      <b>PNG button pack</b>
+      <p>Download the standalone transparent PNG controls included with this studio.</p>
+      <button class="btn success" id="pngPack">⇩ Download PNG Pack</button>
+    </div>
+  </div>
+
+  <div class="history reveal">
+    <div class="history-title">RECENT AUTO-SAVED DESIGNS</div>
+    <div class="history-list" id="historyList"></div>
+  </div>
+</section>
+
+<section class="card preview reveal reveal-right">
+  <div class="preview-head">
+    <div><h2>Live Design Preview</h2><div class="sub">Changes appear instantly in the mockup.</div></div>
+    <div class="head-right">
+      <div class="ai-row">
+        <button class="ai-btn chatgpt" id="aiChatgpt" title="Generate the mockup image with ChatGPT (OpenAI)">🤖 ChatGPT</button>
+        <button class="ai-btn claude" id="aiClaude" title="Refine this prompt with Claude">✳️ Claude</button>
+        <button class="ai-btn gemini" id="aiGemini" title="Generate the mockup image with Gemini (Google)">♊ Gemini</button>
+      </div>
+      <div class="share-wrap">
+        <button class="btn primary" id="shareBtn">↗ Share</button>
+        <div class="share-menu" id="shareMenu">
+          <a target="_blank" rel="noopener" id="shareFb">📘 Facebook</a>
+          <a target="_blank" rel="noopener" id="shareX">✖ X / Twitter</a>
+          <a target="_blank" rel="noopener" id="shareWa">💬 WhatsApp</a>
+          <button id="shareCopy">🔗 Copy link</button>
+        </div>
+      </div>
+      <div class="badge" id="liveBadge">LIVE • IDEA 001</div>
+    </div>
+  </div>
+  <div class="gen-status" id="genStatus"></div>
+  <div class="stage" id="stage">
+    <div class="tag">KJ CLOTHING / GENERATED MOCKUP</div>
+    <div class="tee-stage">
+      <div class="tee-shadow" id="teeShadow"></div>
+      <img class="tee-float" id="teeFloat" src="assets/kj-metalic-tee.jpg" alt="KJ Clothing Metalic tee design">
+      <div id="designOnlyPreview" class="hidden" style="position:absolute;inset:40px;display:grid;place-items:center;text-align:center;border:1px dashed rgba(139,92,246,.35);border-radius:14px;color:#aeb6c8;font-size:11px;letter-spacing:.5px;padding:25px;background:radial-gradient(circle,rgba(139,92,246,.10),transparent 65%);">DESIGN ONLY<br><span style="font-size:8px;color:#737d93">NO T-SHIRT / NO GARMENT MOCKUP</span></div>
+    </div>
+  </div>
+  <div class="promptbox">
+    <div class="prompt-title"><span>Professional generation prompt</span><span id="copyState">READY</span></div>
+    <div class="prompt" id="prompt"></div>
+  </div>
+</section>
+</main>
+
+<section class="embroidery-section reveal" id="embroideryGenerator">
+  <div class="embroidery-header">
+    <div>
+      <h2>🧵 Embroidery Generator</h2>
+      <div class="sub" style="margin:5px 0 0">Separate production layout generator for names, logos, colors, sizes, and embroidery file exports.</div>
+    </div>
+    <div class="embroidery-badge">EMB / DST EXPORT • LOCAL FILES</div>
+  </div>
+
+  <div class="embroidery-layout">
+    <div class="embroidery-panel">
+      <h3>Embroidery Settings</h3>
+      <div class="emb-layout-tabs" aria-label="Embroidery garment layout">
+        <button type="button" class="emb-layout-tab active" id="embFrontTab">FRONT LAYOUT</button>
+        <button type="button" class="emb-layout-tab" id="embBackTab">BACK LAYOUT</button>
+      </div>
+      <div class="embroidery-grid">
+        <div>
+          <label>First Line / Name</label>
+          <input id="embName" value="KJ CLOTHING" maxlength="40" placeholder="Enter first line">
+        </div>
+        <div>
+          <label>Second Line</label>
+          <input id="embName2" value="" maxlength="40" placeholder="Optional second line">
+        </div>
+        <div>
+          <label>Design Size</label>
+          <select id="embSize">
+            <option>Small — 3 in</option>
+            <option selected>Medium — 4 in</option>
+            <option>Large — 5 in</option>
+            <option>Jumbo — 6 in</option>
+          </select>
+        </div>
+        <div>
+          <label>Placement</label>
+          <select id="embPlacement">
+            <option>Left Chest</option>
+            <option>Center Chest</option>
+            <option>Right Chest</option>
+            <option>Sleeve</option>
+            <option>Cap Front</option>
+            <option>Back</option>
+          </select>
+        </div>
+        <div>
+          <label>Stitch Type</label>
+          <select id="embStitch">
+            <option>Column / Satin</option>
+            <option>Fill Stitch</option>
+            <option>Running Stitch</option>
+            <option>Mixed Satin + Fill</option>
+          </select>
+        </div>
+      </div>
+
+      <label style="margin-top:14px">Thread Color</label>
+      <div class="embroidery-colors" id="embColors">
+        <div class="emb-color active" data-color="#f8f9ff" data-name="White" style="background:#f8f9ff"><span style="color:#111">White</span></div>
+        <div class="emb-color" data-color="#05070c" data-name="Black" style="background:#05070c"><span>Black</span></div>
+        <div class="emb-color" data-color="#ef4444" data-name="Red" style="background:#ef4444"><span>Red</span></div>
+        <div class="emb-color" data-color="#3b82f6" data-name="Blue" style="background:#3b82f6"><span>Blue</span></div>
+        <div class="emb-color" data-color="#facc15" data-name="Gold" style="background:#facc15"><span style="color:#111">Gold</span></div>
+        <div class="emb-color" data-color="#34d399" data-name="Green" style="background:#34d399"><span style="color:#111">Green</span></div>
+        <div class="emb-color" data-color="#a855f7" data-name="Purple" style="background:#a855f7"><span>Purple</span></div>
+        <div class="emb-color" data-color="#f97316" data-name="Orange" style="background:#f97316"><span>Orange</span></div>
+        <div class="emb-color" data-color="#ec4899" data-name="Pink" style="background:#ec4899"><span>Pink</span></div>
+        <div class="emb-color" data-color="#38bdf8" data-name="Cyan" style="background:#38bdf8"><span style="color:#111">Cyan</span></div>
+      </div>
+
+      <label style="margin-top:14px">Logo / Artwork</label>
+      <button class="btn upload" id="embLogoBtn">＋ Upload Logo / Artwork — Design Only</button>
+      <input class="hidden" type="file" id="embLogoFile" accept="image/png,image/svg+xml,image/jpeg">
+      <div class="emb-file" id="embLogoName">No logo selected</div>
+
+      <div class="emb-controls">
+        <div class="emb-controls-title">Live Design Controls — drag the name/photo directly or use the controls</div>
+        <div class="emb-control-grid">
+          <div class="emb-control"><label>Line 1 letter height <b id="embNameSizeValue">0.50 in</b></label><input id="embNameSize" type="range" min="0.15" max="1.50" step="0.01" value="0.50"></div>
+          <div class="emb-control"><label>Line 1 width / scale <b id="embNameWidthValue">100%</b></label><input id="embNameWidth" type="range" min="35" max="180" step="1" value="100"></div>
+          <div class="emb-control"><label>Letter spacing <b id="embLetterSpacingValue">0.02 in</b></label><input id="embLetterSpacing" type="range" min="0" max="0.20" step="0.01" value="0.02"></div>
+          <div class="emb-control"><label>Photo width / size <b id="embLogoSizeValue">1.50 in</b></label><input id="embLogoSize" type="range" min="0.25" max="3.50" step="0.05" value="1.50"></div>
+          <div class="emb-control"><label>Photo rotation <b id="embLogoRotateValue">0°</b></label><input id="embLogoRotate" type="range" min="-180" max="180" step="1" value="0"></div>
+          <div class="emb-control"><label>Line 1 rotation <b id="embNameRotateValue">0°</b></label><input id="embNameRotate" type="range" min="-180" max="180" step="1" value="0"></div>
+          <div class="emb-control"><label>Photo X position <b id="embLogoXValue">0%</b></label><input id="embLogoX" type="range" min="-45" max="45" step="1" value="0"></div>
+          <div class="emb-control"><label>Photo Y position <b id="embLogoYValue">-18%</b></label><input id="embLogoY" type="range" min="-45" max="45" step="1" value="-18"></div>
+          <div class="emb-control"><label>Line 1 Y position <b id="embNameYValue">18%</b></label><input id="embNameY" type="range" min="-40" max="40" step="1" value="18"></div>
+          <div class="emb-control"><label>Line 2 size <b id="embName2SizeValue">0.35 in</b></label><input id="embName2Size" type="range" min="0.12" max="1.20" step="0.01" value="0.35"></div>
+          <div class="emb-control"><label>Line 2 width <b id="embName2WidthValue">100%</b></label><input id="embName2Width" type="range" min="35" max="180" step="1" value="100"></div>
+          <div class="emb-control"><label>Line 2 Y position <b id="embName2YValue">30%</b></label><input id="embName2Y" type="range" min="-40" max="45" step="1" value="30"></div>
+        </div>
+        <div class="emb-editor-tools">
+          <div class="emb-tool">
+            <h4>ERASER / REMOVE</h4>
+            <div class="emb-tool-row"><button type="button" id="embClearName">⌫ Erase Name</button><button type="button" id="embClearLogo">⌫ Erase Photo</button></div>
+            <div class="emb-layer-badge">Name and photo are separate layers. Erasing one does not erase the other.</div>
+          </div>
+          <div class="emb-tool">
+            <h4>PHOTO COLOR</h4>
+            <div class="emb-tool-row"><select id="embPhotoColor"><option value="original">Original</option><option value="grayscale">Grayscale</option><option value="red">Red tint</option><option value="blue">Blue tint</option><option value="gold">Gold tint</option><option value="green">Green tint</option><option value="purple">Purple tint</option><option value="cyan">Cyan tint</option><option value="pink">Pink tint</option></select><input id="embPhotoTint" type="color" value="#3b82f6" title="Custom photo tint"></div>
+            <div class="emb-layer-badge">Uploaded artwork remains the source image; the color effect is preview/export styling.</div>
+          </div>
+        </div>
+        <div class="emb-nudge-grid">
+          <button type="button" data-nudge="logo-left">Photo ←</button><button type="button" data-nudge="logo-right">Photo →</button><button type="button" data-nudge="logo-up">Photo ↑</button><button type="button" data-nudge="logo-down">Photo ↓</button>
+        </div>
+        <div class="emb-quick-note">Design-only embroidery artwork: no black blank block and no stitched border. Measurements update live for the design, letters, and uploaded photo.</div>
+      </div>
+
+      <div class="emb-actions">
+        <button class="btn emb-primary" id="embGenerate">🧵 Generate Embroidery Layout</button>
+        <button class="btn" id="embDst">⇩ Save DST</button>
+        <button class="btn" id="embEmb">⇩ Save EMB</button>
+        <button class="btn folder-save" id="embSaveFolder">⇩ Save DST + EMB to Folder</button>
+      </div>
+      <div class="emb-note">
+        Browser-only exporter: the DST file is generated from the current layout with basic stitch data. 
+        EMB is exported as a project package containing the embroidery layout/settings and source artwork reference; 
+        native Wilcom/Barudan production editing still requires a dedicated digitizing engine.
+      </div>
+    </div>
+
+    <div class="embroidery-preview">
+      <h3>Live Embroidery Layout</h3>
+      <div class="emb-preview-stage">
+        <span class="emb-machine-label">EMBROIDERY DIGITIZING / WHITE FABRIC</span>
+        <div class="emb-stage-inner" id="embStageInner">
+          <div class="emb-hoop" id="embHoop">
+            <div class="emb-art">
+              <img id="embLogoPreview" class="emb-logo-preview" alt="Embroidery logo preview" draggable="false">
+              <div id="embNamePreview" class="emb-name">KJ CLOTHING</div>
+              <div id="embName2Preview" class="emb-name-line2 hidden"></div>
+            </div>
+          </div>
+          <span class="emb-dim emb-dim-top" id="embOverallDim">4.00 in design width</span>
+          <span class="emb-dim emb-dim-left" id="embOverallHeight">4.00 in design height</span>
+          <span class="emb-dim emb-dim-name" id="embNameDim">Letter height: 0.50 in</span>
+          <span class="emb-dim emb-dim-logo" id="embLogoDim">Photo: 1.50 in</span>
+        </div>
+        <div class="emb-ruler"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span></div>
+      </div>
+      <div class="emb-meta">
+        <div><b id="embColorMeta">White</b><span>thread</span></div>
+        <div><b id="embSizeMeta">4 in</b><span>hoop/design</span></div>
+        <div><b id="embStitchMeta">Satin</b><span>stitch type</span></div>
+        <div><b id="embCountMeta">0</b><span>estimated stitches</span></div>
+      </div>
+      <div class="emb-file" id="embStatus">Ready — generate a layout first.</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer reveal">KJ Clothing AI Design Studio • 2,000 concept engine • realtime preview • local auto-save</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" onerror="window.THREE_LOAD_FAILED=true"></script>
+<script>
+(function(){
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const els=document.querySelectorAll(".reveal");
+  if(!reduce && "IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add("revealed");io.unobserve(e.target)}
+    }),{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+    els.forEach((e,i)=>{e.style.transitionDelay=Math.min(i*55,220)+"ms";io.observe(e)});
+  }else els.forEach(e=>e.classList.add("revealed"));
+  if(reduce || !window.THREE || window.THREE_LOAD_FAILED)return;
+  try{
+    const c=document.getElementById("three-bg");
+    const r=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});
+    r.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+    r.setSize(innerWidth,innerHeight,false);
+    if("outputColorSpace" in r)r.outputColorSpace=THREE.SRGBColorSpace;
+    const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(48,innerWidth/innerHeight,.1,100);
+    cam.position.z=9;const g=new THREE.Group();scene.add(g);
+    const core=new THREE.Mesh(new THREE.IcosahedronGeometry(2.25,2),
+      new THREE.MeshStandardMaterial({color:0x8b5cf6,metalness:.72,roughness:.2,transparent:true,opacity:.30,wireframe:true}));g.add(core);
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(3.1,.012,8,180),
+      new THREE.MeshBasicMaterial({color:0x22d3ee,transparent:true,opacity:.20,wireframe:true}));
+    ring.rotation.x=Math.PI*.56;g.add(ring);
+    const ring2=ring.clone();ring2.material=ring.material.clone();ring2.material.color.set(0x34d399);
+    ring2.material.opacity=.13;ring2.rotation.x=Math.PI*.2;ring2.rotation.y=Math.PI*.32;g.add(ring2);
+    const pg=new THREE.BufferGeometry(),n=260,pos=new Float32Array(n*3);
+    for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,rad=5.5*Math.pow(Math.random(),.55);
+      pos[i*3]=Math.cos(a)*rad;pos[i*3+1]=(Math.random()-.5)*5.5;pos[i*3+2]=(Math.random()-.5)*5}
+    pg.setAttribute("position",new THREE.BufferAttribute(pos,3));
+    scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0xb8a4ff,size:.018,transparent:true,opacity:.45})));
+    const pointer={x:0,y:0};let st=0,sc=0;
+    addEventListener("pointermove",e=>{pointer.x=e.clientX/innerWidth-.5;pointer.y=e.clientY/innerHeight-.5},{passive:true});
+    addEventListener("scroll",()=>st=scrollY||0,{passive:true});
+    addEventListener("resize",()=>{r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()},{passive:true});
+    const clock=new THREE.Clock();
+    (function loop(){requestAnimationFrame(loop);const t=clock.getElapsedTime();sc+=(st-sc)*.055;
+      g.rotation.x+=.0016;g.rotation.y+=.0024;g.rotation.x+=pointer.y*.0008;g.rotation.y+=pointer.x*.0012;
+      core.position.y=Math.sin(t*.7)*.12;ring.rotation.z=t*.08;ring2.rotation.z=-t*.055;
+      g.position.y=-Math.min(sc/900,3.5)*.22;g.position.x=pointer.x*.34;cam.position.y=pointer.y*.12;
+      cam.lookAt(0,0,0);r.render(scene,cam)})();
+  }catch(err){console.warn("3D background disabled:",err)}
+})();
+</script>
+<script>
+const concepts=["Minimalist","Vintage","Retro","Collegiate","Cyberpunk","Luxury","Graffiti","Anime","Motorsport","Nature","Typography","Abstract"];
+const styles=["Bold Graphic","Clean Minimal","Photographic","Editorial","Airbrush","3D Chrome","Hand-drawn"];
+const colors=["Midnight Black","Arctic White","Electric Blue","Crimson Red","Forest Green","Sand Beige","Lavender","Steel Gray","Neon Lime"];
+const STORAGE_KEY="kj_clothing_ai_studio_v2";
+let idea=1, concept="Minimalist", color="Midnight Black", uploaded="", saveTimer=null, history=[];
+
+const $=id=>document.getElementById(id);
+const controls=["base","garmentType","size","placement","visual","background"];
+
+function state(){
+  return {
+    idea,concept,color,
+    base:$("base").value,garmentType:$("garmentType").value,size:$("size").value,
+    placement:$("placement").value,visual:$("visual").value,background:$("background").value,
+    updated:new Date().toISOString()
+  };
+}
+function setSaveState(mode,text){
+  $("savePill").classList.remove("saving","saved");
+  $("savePill").classList.add(mode);
+  $("saveText").textContent=text;
+}
+function saveRealtime(){
+  clearTimeout(saveTimer);
+  setSaveState("saving","Saving changes…");
+  saveTimer=setTimeout(()=>{
+    try{
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(state()));
+      pushHistory(false);
+      setSaveState("saved","All changes saved");
+    }catch(e){ setSaveState("saving","Storage unavailable"); }
+  },160);
+}
+function pushHistory(force=true){
+  const s=state();
+  const snap={...s, prompt:makePrompt()};
+  if(!force && history[0] && history[0].prompt===snap.prompt) return;
+  history=[snap,...history.filter(x=>x.prompt!==snap.prompt)].slice(0,8);
+  localStorage.setItem(STORAGE_KEY+"_history",JSON.stringify(history));
+  renderHistory();
+}
+function renderHistory(){
+  const box=$("historyList"); box.innerHTML="";
+  if(!history.length){box.innerHTML='<span style="font-size:7px;color:#596276">No saved snapshots yet.</span>';return}
+  history.forEach((h,i)=>{
+    const b=document.createElement("button");b.className="history-item";
+    b.textContent=`${String(h.idea).padStart(3,"0")} • ${h.concept} • ${h.color.replace("Midnight ","")}`;
+    b.title="Restore this auto-saved design";
+    b.onclick=()=>restore(h);
+    box.appendChild(b);
+  });
+}
+function restore(h){
+  idea=h.idea;concept=h.concept;color=h.color;
+  $("base").value=h.base;$("garmentType").value=h.garmentType;$("size").value=h.size;
+  $("placement").value=h.placement;$("visual").value=h.visual;$("background").value=h.background;
+  syncSelections();update();saveRealtime();flash("DESIGN RESTORED");
+}
+function loadSaved(){
+  try{
+    const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
+    if(s){
+      idea=s.idea||1;concept=s.concept||"Minimalist";color=s.color||"Midnight Black";
+      if(s.base)$("base").value=s.base;
+      ["garmentType","size","placement","visual","background"].forEach(id=>{if(s[id])$(id).value=s[id]});
+    }
+    history=JSON.parse(localStorage.getItem(STORAGE_KEY+"_history")||"[]");
+  }catch(e){}
+  syncSelections();renderHistory();
+}
+function syncSelections(){
+  document.querySelectorAll("#concepts .chip").forEach(x=>x.classList.toggle("active",x.textContent===concept));
+  document.querySelectorAll(".swatch").forEach(x=>x.classList.toggle("active",x.dataset.color===color));
+}
+document.querySelectorAll("#concepts .chip").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#concepts .chip").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");concept=b.textContent;update();saveRealtime();
+});
+document.querySelectorAll(".swatch").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".swatch").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");color=b.dataset.color;update();saveRealtime();
+});
+controls.forEach(id=>$(id).addEventListener("input",()=>{update();saveRealtime()}));
+controls.forEach(id=>$(id).addEventListener("change",()=>{update();saveRealtime()}));
+
+$("random").onclick=()=>{
+  idea=Math.floor(Math.random()*2000)+1;
+  concept=concepts[Math.floor(Math.random()*concepts.length)];
+  color=colors[Math.floor(Math.random()*colors.length)];
+  $("visual").value=styles[Math.floor(Math.random()*styles.length)];
+  syncSelections();update();saveRealtime();flash("RANDOMIZED");
+};
+$("generate").onclick=()=>{
+  idea=(idea%2000)+1;update();saveRealtime();pushHistory(true);flash("DESIGN GENERATED");
+};
+$("uploadBtn").onclick=()=>$("file").click();
+$("file").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  $("fileName").textContent="Uploaded: "+f.name;
+  const r=new FileReader();
+  r.onload=ev=>{
+    uploaded=ev.target.result;
+    $("teeFloat").src=uploaded;
+    try{
+      if(uploaded.length<4_000_000)localStorage.setItem(STORAGE_KEY+"_upload",uploaded);
+      else localStorage.removeItem(STORAGE_KEY+"_upload");
+    }catch(err){console.warn("Upload not persisted:",err)}
+  };
+  r.onerror=()=>flash("IMAGE LOAD FAILED");
+  r.readAsDataURL(f);flash("IMAGE LOADED");
+};
+$("copy").onclick=async()=>{
+  try{await navigator.clipboard.writeText($("prompt").textContent);flash("PROMPT COPIED");}
+  catch(e){flash("COPY BLOCKED BY BROWSER");}
+};
+$("pngPack").onclick=()=>{
+  ["generate-button.png","upload-button.png","random-button.png","copy-button.png"].forEach((name,i)=>{
+    const a=document.createElement("a");a.href="assets/"+name;a.download=name;
+    document.body.appendChild(a);setTimeout(()=>{a.click();a.remove()},i*180);
+  });
+  flash("PNG PACK READY");
+};
+window.addEventListener("beforeunload",()=>{
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()));}catch(e){}
+});
+
+function makePrompt(){
+  const garment=$("garmentType").value,size=$("size").value,placement=$("placement").value;
+  const visual=$("visual").value,bg=$("background").value;
+  const garmentPart=garment==="Design Only"?"standalone apparel graphic design only, NO T-SHIRT, NO GARMENT, NO CLOTHING MOCKUP, isolated design artwork, print-ready":`${garment} in ${size}, ${placement} placement, professional apparel mockup`;
+  return `${$("base").value.trim()} Concept ${idea}: ${concept} ${visual} aesthetic, ${color} palette, ${garmentPart}, premium KJ Clothing identity, strong hierarchy, clean vector-ready edges, balanced negative space, realistic fabric texture, ${bg}, dark cinematic high contrast, commercial streetwear campaign quality, no watermark.`;
+}
+function update(){
+  const garment=$("garmentType").value;
+  const designOnly=garment==="Design Only";
+  $("teeFloat").classList.toggle("hidden",designOnly);
+  $("teeShadow").classList.toggle("hidden",designOnly);
+  $("designOnlyPreview").classList.toggle("hidden",!designOnly);
+  $("size").disabled=designOnly;
+  $("placement").disabled=designOnly;
+  $("ideaNo").textContent=String(idea).padStart(3,"0");
+  $("liveBadge").textContent=`LIVE • IDEA ${String(idea).padStart(3,"0")}`;
+  $("prompt").textContent=makePrompt();
+  $("score").textContent=Math.min(99,92+Math.round(makePrompt().length/55))+"%";
+}
+function flash(text){
+  $("toast").textContent=text;$("toast").classList.add("show");
+  setTimeout(()=>$("toast").classList.remove("show"),1000);
+  $("copyState").textContent=text;setTimeout(()=>$("copyState").textContent="READY",1000);
+}
+/* ================= SEARCH BAR ================= */
+$("searchInput").addEventListener("input",()=>{
+  const q=$("searchInput").value.trim().toLowerCase();
+  let anyChip=false,anySwatch=false;
+  document.querySelectorAll("#concepts .chip").forEach(chip=>{
+    const match=!q||chip.textContent.toLowerCase().includes(q);
+    chip.style.display=match?"":"none";
+    if(match)anyChip=true;
+  });
+  document.querySelectorAll(".swatch").forEach(sw=>{
+    const match=!q||sw.dataset.color.toLowerCase().includes(q);
+    sw.style.display=match?"":"none";
+    if(match)anySwatch=true;
+  });
+  document.querySelectorAll("#garmentType,#size,#placement,#visual,#background").forEach(sel=>{
+    let found=false;
+    Array.from(sel.options).forEach(opt=>{
+      const match=!q||opt.textContent.toLowerCase().includes(q);
+      opt.hidden=!match;
+      if(match)found=true;
+    });
+    sel.style.outline=(q&&found)?"1px solid rgba(139,92,246,.5)":"";
+  });
+  $("searchEmpty").classList.toggle("hidden",!(q&&!anyChip&&!anySwatch));
+});
+
+/* ================= SAVE PHOTO ================= */
+$("savePhoto").onclick=async()=>{
+  try{
+    const img=$("teeFloat");
+    const w=Math.max(600,img.naturalWidth||600),h=Math.max(700,img.naturalHeight||700);
+    const canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;
+    const ctx=canvas.getContext("2d");ctx.fillStyle="#070a11";ctx.fillRect(0,0,w,h);
+    if(!img.classList.contains("hidden") && img.complete && img.naturalWidth){
+      try{ctx.drawImage(img,0,0,w,h)}catch(err){drawFallbackPreview(ctx,w,h)}
+    }else drawFallbackPreview(ctx,w,h);
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png"));
+    if(!blob)throw new Error("PNG export failed");
+    downloadBlobMain(blob,`kj-clothing-idea-${String(idea).padStart(3,"0")}.png`);
+    flash("PHOTO SAVED");
+  }catch(e){console.error(e);flash("PHOTO EXPORT FAILED")}
+};
+function drawFallbackPreview(ctx,w,h){
+  ctx.fillStyle="#8b5cf6";ctx.font=`900 ${Math.max(48,Math.floor(w*.1))}px Arial`;ctx.textAlign="center";
+  ctx.fillText("KJ",w/2,h*.48);ctx.fillStyle="#22d3ee";ctx.font=`700 ${Math.max(16,Math.floor(w*.035))}px Arial`;
+  ctx.fillText("CLOTHING",w/2,h*.54);
+}
+function downloadBlobMain(blob,name){
+  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);
+}
+
+/* ================= AI IMAGE / PROMPT GENERATION ================= */
+function setGenState(mode,text){
+  const el=$("genStatus");
+  el.textContent=text;el.className="gen-status "+mode;
+}
+function getKey(provider,label){
+  let key=sessionStorage.getItem("kj_key_"+provider);
+  if(!key){
+    key=window.prompt(
+      `Enter your ${label} API key to generate with ${label}.\n\nThis key is kept only in this browser tab (sessionStorage) and is sent directly from your browser to ${label}'s API — never to KJ Clothing or anywhere else.`
+    );
+    if(key)sessionStorage.setItem("kj_key_"+provider,key.trim());
+  }
+  return key?key.trim():null;
+}
+function applyGenerated(url,provider){
+  $("teeFloat").src=url;
+  try{localStorage.setItem(STORAGE_KEY+"_upload",url);}catch(e){}
+  setGenState("done",provider+" generated your mockup ✓");
+  flash(provider.toUpperCase()+" IMAGE READY");
+}
+async function withButton(btn,fn){
+  btn.disabled=true;const old=btn.textContent;
+  try{await fn();}finally{btn.disabled=false;btn.textContent=old;}
+}
+
+async function generateWithChatGPT(){
+  const key=getKey("openai","OpenAI (ChatGPT)");
+  if(!key)return;
+  setGenState("busy","Generating with ChatGPT…");
+  try{
+    const res=await fetch("https://api.openai.com/v1/images/generations",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+      body:JSON.stringify({model:"gpt-image-1",prompt:makePrompt(),size:"1024x1024"})
+    });
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error?.message||"OpenAI request failed");
+    const item=data.data[0];
+    const url=item.b64_json?("data:image/png;base64,"+item.b64_json):item.url;
+    applyGenerated(url,"ChatGPT");
+  }catch(e){
+    setGenState("error","ChatGPT: "+e.message+" — if this is a network/CORS error, OpenAI's API usually needs to be called from a small backend, not directly from a browser.");
+  }
+}
+async function generateWithGemini(){
+  const key=getKey("google","Google Gemini");
+  if(!key)return;
+  setGenState("busy","Generating with Gemini…");
+  try{
+    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${encodeURIComponent(key)}`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({contents:[{parts:[{text:makePrompt()}]}]})
+    });
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error?.message||"Gemini request failed");
+    const part=(data.candidates?.[0]?.content?.parts||[]).find(p=>p.inlineData);
+    if(!part)throw new Error("No image returned in response");
+    applyGenerated(`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,"Gemini");
+  }catch(e){
+    setGenState("error","Gemini: "+e.message);
+  }
+}
+async function generateWithClaude(){
+  const key=getKey("anthropic","Anthropic (Claude)");
+  if(!key)return;
+  setGenState("busy","Asking Claude to refine the creative brief…");
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "x-api-key":key,
+        "anthropic-version":"2023-06-01",
+        "anthropic-dangerous-direct-browser-access":"true"
+      },
+      body:JSON.stringify({
+        model:"claude-sonnet-4-5-20250929",
+        max_tokens:400,
+        messages:[{role:"user",content:
+          `Rewrite this apparel mockup prompt into a tight, professional creative brief an art director would hand to a photographer/image generator. Under 110 words, no preamble, no markdown:\n\n${makePrompt()}`
+        }]
+      })
+    });
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error?.message||"Claude request failed");
+    const text=(data.content||[]).map(c=>c.text||"").join("").trim();
+    if(!text)throw new Error("Empty response");
+    $("prompt").textContent=text;
+    setGenState("done","Claude refined the brief. Claude itself doesn't generate images — use ChatGPT or Gemini above to render this brief as a picture.");
+    flash("PROMPT REFINED BY CLAUDE");
+  }catch(e){
+    setGenState("error","Claude: "+e.message);
+  }
+}
+$("aiChatgpt").onclick=()=>withButton($("aiChatgpt"),generateWithChatGPT);
+$("aiGemini").onclick=()=>withButton($("aiGemini"),generateWithGemini);
+$("aiClaude").onclick=()=>withButton($("aiClaude"),generateWithClaude);
+
+/* ================= SHARE ================= */
+function buildShareLinks(){
+  const text=encodeURIComponent(`Check out my KJ Clothing design — Idea #${String(idea).padStart(3,"0")}, ${concept} in ${color}.`);
+  const url=encodeURIComponent(location.href);
+  $("shareFb").href=`https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  $("shareX").href=`https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+  $("shareWa").href=`https://wa.me/?text=${text}%20${url}`;
+}
+$("shareBtn").onclick=async(e)=>{
+  e.stopPropagation();
+  const text=`Check out my KJ Clothing design — Idea #${String(idea).padStart(3,"0")}, ${concept} in ${color}.`;
+  if(navigator.share){
+    let files;
+    try{
+      const resp=await fetch($("teeFloat").src);
+      const blob=await resp.blob();
+      const file=new File([blob],"kj-design.png",{type:blob.type||"image/png"});
+      if(navigator.canShare&&navigator.canShare({files:[file]}))files=[file];
+    }catch(err){}
+    try{
+      await navigator.share(files?{title:"KJ Clothing",text,files}:{title:"KJ Clothing",text,url:location.href});
+      flash("SHARED");
+      return;
+    }catch(err){ /* cancelled or unsupported — fall through to menu */ }
+  }
+  buildShareLinks();
+  $("shareMenu").classList.toggle("show");
+};
+$("shareCopy").onclick=async()=>{
+  try{await navigator.clipboard.writeText(location.href);flash("LINK COPIED");}
+  catch(e){flash("COPY BLOCKED BY BROWSER");}
+  $("shareMenu").classList.remove("show");
+};
+document.addEventListener("click",(e)=>{
+  if(!e.target.closest(".share-wrap"))$("shareMenu").classList.remove("show");
+});
+
+const DEFAULT_TEE_SVG=`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="700" viewBox="0 0 600 700">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#242938"/><stop offset="1" stop-color="#090b11"/></linearGradient></defs>
+<rect width="600" height="700" rx="36" fill="#070a11"/>
+<path d="M180 120L95 180 155 270 205 235v330h190V235l50 35 60-90-85-60-70 45H250z" fill="url(#g)" stroke="#8b5cf6" stroke-width="5"/>
+<text x="300" y="365" text-anchor="middle" fill="#f8f9ff" font-size="54" font-family="Arial" font-weight="900">KJ</text>
+<text x="300" y="405" text-anchor="middle" fill="#22d3ee" font-size="18" font-family="Arial" letter-spacing="5">CLOTHING</text></svg>`;
+function setDefaultPreview(){
+  if(!$("teeFloat").getAttribute("src") || $("teeFloat").naturalWidth===0){
+    $("teeFloat").src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(DEFAULT_TEE_SVG);
+  }
+}
+$("teeFloat").addEventListener("error",setDefaultPreview);
+setDefaultPreview();
+
+loadSaved();
+try{
+  const up=localStorage.getItem(STORAGE_KEY+"_upload");
+  if(up){$("teeFloat").src=up;}
+}catch(e){}
+update();
+setSaveState("saved","All changes saved");
+
+/* ================= EMBROIDERY GENERATOR ================= */
+(function(){
+  const E=id=>document.getElementById(id);
+  const defaults=()=>({name:"KJ CLOTHING",name2:"",logo:"",color:"#f8f9ff",colorName:"White",logoW:1.50,logoRot:0,logoX:0,logoY:-18,nameH:0.50,nameW:100,nameRot:0,nameY:18,name2H:0.35,name2W:100,name2Y:30,letterSpacing:0.02,photoColor:"original",photoTint:"#3b82f6"});
+  let embColor="#f8f9ff", embColorName="White", embLogoData="", embStitches=[];
+  let embLogoW=1.50, embLogoRot=0, embLogoX=0, embLogoY=-18;
+  let embNameH=0.50, embNameW=100, embNameRot=0, embNameY=18, embLetterSpacing=0.02;
+  let embName2H=0.35, embName2W=100, embName2Y=30;
+  let embPhotoColor="original", embPhotoTint="#3b82f6";
+  let embLayout="front";
+  const EMB_KEY="kj_clothing_embroidery_v3";
+  const layouts={front:defaults(),back:defaults()};
+
+  function embSizeInches(){const m=(E("embSize").value.match(/([\d.]+)\s*in/)||[])[1];return Number(m||4)}
+  function estimateStitches(){
+    const name=(E("embName").value||"").trim(), name2=(E("embName2").value||"").trim(), size=embSizeInches();
+    const density=E("embStitch").value.includes("Fill")?1.22:1;
+    return Math.max(1800,Math.round(((name.length+name2.length)*410+size*720+(embLogoData?700:0))*density));
+  }
+  function setRangeLabel(id,value){const el=E(id);if(el)el.textContent=value}
+  function tintHue(hex){
+    const m=hex.match(/^#([0-9a-f]{6})$/i);if(!m)return 210;
+    const n=parseInt(m[1],16),r=n>>16&255,g=n>>8&255,b=n&255,max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;
+    if(!d)return 0;let h;if(max===r)h=((g-b)/d)%6;else if(max===g)h=(b-r)/d+2;else h=(r-g)/d+4;return Math.round(h*60+(h<0?360:0));
+  }
+  function photoFilter(){
+    if(!embLogoData)return "none";
+    const h=tintHue(embPhotoTint);
+    const map={original:"none",grayscale:"grayscale(1) contrast(1.15)",red:`grayscale(1) sepia(1) saturate(6) hue-rotate(${h-0}deg)`,blue:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-210}deg)`,gold:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-45}deg)`,green:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-130}deg)`,purple:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-275}deg)`,cyan:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-190}deg)`,pink:`grayscale(1) sepia(1) saturate(5) hue-rotate(${h-325}deg)`};
+    return map[embPhotoColor]||"none";
+  }
+  function embUpdate(){
+    const name=(E("embName").value||"").trim(), name2=(E("embName2").value||"").trim(), design=embSizeInches(), stage=E("embStageInner");
+    const namePx=Math.max(10,Math.round((embNameH/design)*stage.clientHeight));
+    const name2Px=Math.max(8,Math.round((embName2H/design)*stage.clientHeight));
+    const logoPx=Math.max(12,Math.round((embLogoW/design)*stage.clientHeight));
+    const nameEl=E("embNamePreview"), name2El=E("embName2Preview"), logoEl=E("embLogoPreview");
+    nameEl.textContent=name; nameEl.style.color=embColor; nameEl.style.fontSize=namePx+"px"; nameEl.style.letterSpacing=Math.max(0,Math.round((embLetterSpacing/design)*stage.clientHeight))+"px"; nameEl.style.transform=`translate(-50%,-50%) rotate(${embNameRot}deg) scaleX(${embNameW/100})`; nameEl.style.top=(50+embNameY)+"%"; nameEl.style.display=name?"block":"none";
+    name2El.textContent=name2; name2El.style.color=embColor; name2El.style.fontSize=name2Px+"px"; name2El.style.transform=`translate(-50%,-50%) scaleX(${embName2W/100})`; name2El.style.top=(50+embName2Y)+"%"; name2El.classList.toggle("hidden",!name2);
+    logoEl.style.width=logoPx+"px";logoEl.style.left=(50+embLogoX)+"%";logoEl.style.top=(50+embLogoY)+"%";logoEl.style.transform=`translate(-50%,-50%) rotate(${embLogoRot}deg)`;logoEl.style.filter=photoFilter();logoEl.style.display=embLogoData?"block":"none";
+    setRangeLabel("embNameSizeValue",embNameH.toFixed(2)+" in");setRangeLabel("embNameWidthValue",embNameW+"%");setRangeLabel("embLetterSpacingValue",embLetterSpacing.toFixed(2)+" in");setRangeLabel("embLogoSizeValue",embLogoW.toFixed(2)+" in");setRangeLabel("embLogoRotateValue",embLogoRot+"°");setRangeLabel("embNameRotateValue",embNameRot+"°");setRangeLabel("embLogoXValue",(embLogoX>=0?"+":"")+embLogoX+"%");setRangeLabel("embLogoYValue",(embLogoY>=0?"+":"")+embLogoY+"%");setRangeLabel("embNameYValue",(embNameY>=0?"+":"")+embNameY+"%");setRangeLabel("embName2SizeValue",embName2H.toFixed(2)+" in");setRangeLabel("embName2WidthValue",embName2W+"%");setRangeLabel("embName2YValue",(embName2Y>=0?"+":"")+embName2Y+"%");
+    E("embOverallDim").textContent=design.toFixed(2)+" in design width";E("embOverallHeight").textContent=design.toFixed(2)+" in design height";E("embNameDim").textContent="Letter height: "+embNameH.toFixed(2)+" in";E("embLogoDim").textContent="Photo: "+embLogoW.toFixed(2)+" in";E("embColorMeta").textContent=embColorName;E("embSizeMeta").textContent=design+" in";
+    const st=E("embStitch").value;E("embStitchMeta").textContent=st.replace("Column / ","").replace("Mixed Satin + Fill","Mixed");E("embCountMeta").textContent=estimateStitches().toLocaleString();
+    saveCurrentLayout();
+  }
+  function currentLayout(){return {name:E("embName").value,name2:E("embName2").value,logo:embLogoData,color:embColor,colorName:embColorName,logoW:embLogoW,logoRot:embLogoRot,logoX:embLogoX,logoY:embLogoY,nameH:embNameH,nameW:embNameW,nameRot:embNameRot,nameY:embNameY,name2H:embName2H,name2W:embName2W,name2Y:embName2Y,letterSpacing:embLetterSpacing,photoColor:embPhotoColor,photoTint:embPhotoTint}}
+  function saveCurrentLayout(){layouts[embLayout]=currentLayout();try{localStorage.setItem(EMB_KEY,JSON.stringify({layouts,global:{size:E("embSize").value,placement:E("embPlacement").value,stitch:E("embStitch").value,color:embColor,colorName:embColorName}}))}catch(e){}}
+  function applyLayout(s){
+    s={...defaults(),...(s||{})};E("embName").value=s.name||"";E("embName2").value=s.name2||"";embLogoData=s.logo||"";embColor=s.color||"#f8f9ff";embColorName=s.colorName||"White";embLogoW=Number(s.logoW??1.5);embLogoRot=Number(s.logoRot??0);embLogoX=Number(s.logoX??0);embLogoY=Number(s.logoY??-18);embNameH=Number(s.nameH??.5);embNameW=Number(s.nameW??100);embNameRot=Number(s.nameRot??0);embNameY=Number(s.nameY??18);embName2H=Number(s.name2H??.35);embName2W=Number(s.name2W??100);embName2Y=Number(s.name2Y??30);embLetterSpacing=Number(s.letterSpacing??.02);embPhotoColor=s.photoColor||"original";embPhotoTint=s.photoTint||"#3b82f6";
+    const set=(id,v)=>{const el=E(id);if(el)el.value=v};set("embNameSize",embNameH);set("embNameWidth",embNameW);set("embNameRotate",embNameRot);set("embNameY",embNameY);set("embName2Size",embName2H);set("embName2Width",embName2W);set("embName2Y",embName2Y);set("embLetterSpacing",embLetterSpacing);set("embLogoSize",embLogoW);set("embLogoRotate",embLogoRot);set("embLogoX",embLogoX);set("embLogoY",embLogoY);set("embPhotoColor",embPhotoColor);set("embPhotoTint",embPhotoTint);
+    E("embLogoPreview").src=embLogoData||"";E("embLogoPreview").style.display=embLogoData?"block":"none";document.querySelectorAll("#embColors .emb-color").forEach(x=>x.classList.toggle("active",x.dataset.color===embColor));
+    embStitches=[];embUpdate();
+  }
+  function flashEmb(msg){E("embStatus").textContent=msg;if(typeof flash==="function")flash(msg.toUpperCase())}
+
+  document.querySelectorAll("#embColors .emb-color").forEach(b=>b.onclick=()=>{document.querySelectorAll("#embColors .emb-color").forEach(x=>x.classList.remove("active"));b.classList.add("active");embColor=b.dataset.color;embColorName=b.dataset.name;embUpdate()});
+  ["embName","embName2","embSize","embPlacement","embStitch"].forEach(id=>{E(id).addEventListener("input",embUpdate);E(id).addEventListener("change",embUpdate)});
+  const ranges={embNameSize:v=>embNameH=+v,embNameWidth:v=>embNameW=+v,embLetterSpacing:v=>embLetterSpacing=+v,embLogoSize:v=>embLogoW=+v,embLogoRotate:v=>embLogoRot=+v,embNameRotate:v=>embNameRot=+v,embLogoX:v=>embLogoX=+v,embLogoY:v=>embLogoY=+v,embNameY:v=>embNameY=+v,embName2Size:v=>embName2H=+v,embName2Width:v=>embName2W=+v,embName2Y:v=>embName2Y=+v};
+  Object.entries(ranges).forEach(([id,fn])=>E(id).oninput=e=>{fn(e.target.value);embUpdate()});
+  E("embPhotoColor").onchange=e=>{embPhotoColor=e.target.value;embUpdate()};E("embPhotoTint").oninput=e=>{embPhotoTint=e.target.value;embUpdate()};
+  E("embClearName").onclick=()=>{E("embName").value="";E("embName2").value="";embUpdate();flashEmb("NAME LAYER ERASED")};
+  E("embClearLogo").onclick=()=>{embLogoData="";E("embLogoFile").value="";E("embLogoPreview").removeAttribute("src");embUpdate();flashEmb("PHOTO LAYER ERASED")};
+  document.querySelectorAll(".emb-nudge-grid button").forEach(btn=>btn.onclick=()=>{const d=btn.dataset.nudge;if(d==="logo-left")embLogoX=Math.max(-45,embLogoX-2);if(d==="logo-right")embLogoX=Math.min(45,embLogoX+2);if(d==="logo-up")embLogoY=Math.max(-45,embLogoY-2);if(d==="logo-down")embLogoY=Math.min(45,embLogoY+2);E("embLogoX").value=embLogoX;E("embLogoY").value=embLogoY;embUpdate()});
+  E("embLogoBtn").onclick=()=>E("embLogoFile").click();
+  E("embLogoFile").onchange=e=>{const f=e.target.files[0];if(!f)return;E("embLogoName").textContent="Selected: "+f.name;const r=new FileReader();r.onload=ev=>{embLogoData=ev.target.result;E("embLogoPreview").src=embLogoData;E("embLogoPreview").style.display="block";embUpdate();flashEmb("LOGO LOADED")};r.readAsDataURL(f)};
+
+  function dragLayer(el,type){
+    let active=false,startX=0,startY=0,startValX=0,startValY=0;
+    el.addEventListener("pointerdown",e=>{if(el.classList.contains("hidden")||el.style.display==="none")return;active=true;el.setPointerCapture(e.pointerId);startX=e.clientX;startY=e.clientY;startValX=type==="logo"?embLogoX:(type==="name"?0:0);startValY=type==="logo"?embLogoY:(type==="name"?embNameY:embName2Y);e.preventDefault()});
+    el.addEventListener("pointermove",e=>{if(!active)return;const rect=E("embStageInner").getBoundingClientRect();const dx=(e.clientX-startX)/rect.width*100;const dy=(e.clientY-startY)/rect.height*100;if(type==="logo"){embLogoX=Math.max(-45,Math.min(45,startValX+dx));embLogoY=Math.max(-45,Math.min(45,startValY+dy));E("embLogoX").value=embLogoX;E("embLogoY").value=embLogoY}else if(type==="name"){embNameY=Math.max(-40,Math.min(40,startValY+dy));E("embNameY").value=embNameY}else{embName2Y=Math.max(-40,Math.min(45,startValY+dy));E("embName2Y").value=embName2Y}embUpdate()});
+    el.addEventListener("pointerup",()=>{active=false});el.addEventListener("pointercancel",()=>{active=false});
+  }
+  dragLayer(E("embLogoPreview"),"logo");dragLayer(E("embNamePreview"),"name");dragLayer(E("embName2Preview"),"name2");
+
+  function switchLayout(which){saveCurrentLayout();embLayout=which;E("embFrontTab").classList.toggle("active",which==="front");E("embBackTab").classList.toggle("active",which==="back");applyLayout(layouts[which]);flashEmb((which==="front"?"FRONT":"BACK")+" LAYOUT ACTIVE")}
+  E("embFrontTab").onclick=()=>switchLayout("front");E("embBackTab").onclick=()=>switchLayout("back");
+
+  function buildStitches(){
+    const names=[(layouts[embLayout].name||E("embName").value||"KJ CLOTHING").trim().toUpperCase(),(layouts[embLayout].name2||E("embName2").value||"").trim().toUpperCase()].filter(Boolean);const size=embSizeInches();const n=Math.max(1600,Math.round(estimateStitches()));const pts=[];const totalChars=Math.max(1,names.join("").replace(/ /g,"").length);let cursor=-700;
+    names.forEach((line,li)=>{const chars=[...line].filter(c=>c!==" "),width=Math.min(1400,Math.max(420,chars.length*100)),start=-width/2;chars.forEach((ch,i)=>{const x0=start+i*(width/Math.max(chars.length,1)),cw=width/Math.max(chars.length,1)*.72,top=li?40:-160,bottom=li?160:120;for(let k=0;k<Math.max(12,Math.floor(n/(totalChars*18)));k++){const t=k/Math.max(1,Math.floor(n/(totalChars*18))-1),y=top+(bottom-top)*t,x=x0+cw*(0.18+0.64*(k%2));pts.push([Math.round(x),Math.round(y)])}})});
+    while(pts.length<n){const i=pts.length,a=i*.19;pts.push([Math.round(Math.cos(a)*(700-(i%n)*.12)),Math.round(Math.sin(a)*300)])}return pts.slice(0,n);
+  }
+  function writeDST(stitches){
+    const header=new Uint8Array(512),h=new TextEncoder(),put=(pos,s)=>{const b=h.encode(s);for(let i=0;i<b.length&&pos+i<512;i++)header[pos+i]=b[i]};put(0,"LA:KJ CLOTHING EMBROIDERY\r");put(20,"ST: "+String(stitches.length).padStart(7," ")+"\r");put(60,"CO: "+embColorName+"\r");put(120,"AX:+00000\rAY:+00000\rMX:+00000\rMY:+00000\r");const out=new Uint8Array(512+stitches.length*3+3);out.set(header);let p=512,lastX=0,lastY=0;function enc(dx,dy,jump=false){dx=Math.max(-121,Math.min(121,Math.round(dx)));dy=Math.max(-121,Math.min(121,Math.round(dy)));let x=0,y=0;const sx=[81,41,23,12,6,3],sy=[1,2,4,8,16,32];let ax=Math.abs(dx),ay=Math.abs(dy);for(let i=0;i<sx.length;i++){if(ax>=sx[i]){x|=sx[i];ax-=sx[i]}if(ay>=sy[i]){y|=sy[i];ay-=sy[i]}}if(dx<0)x|=0x40;if(dy>0)y|=0x80;out[p++]=x;out[p++]=y;out[p++]=jump?0x83:0x03}for(const [x,y] of stitches){enc(x-lastX,y-lastY,false);lastX=x;lastY=y}out[p++]=0x1a;out[p++]=0x1a;out[p++]=0x1a;return out.slice(0,p)}
+  function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+  async function saveToFolder(){
+    if(!embStitches.length)embStitches=buildStitches();
+    const dst=writeDST(embStitches), emb={format:"EMB",version:"KJ Clothing Embroidery Project 2.0",layout:embLayout,name:E("embName").value.trim(),name2:E("embName2").value.trim(),size:E("embSize").value,placement:E("embPlacement").value,stitchType:E("embStitch").value,threadColor:embColorName,estimatedStitches:embStitches.length,stitches:embStitches,logoData:embLogoData||null,photoColor:embPhotoColor,photoTint:embPhotoTint,generatedAt:new Date().toISOString(),note:"Browser-generated embroidery project package. Native commercial EMB editing/digitizing requires a compatible embroidery digitizing application."};
+    if(window.showDirectoryPicker){try{const dir=await window.showDirectoryPicker({mode:"readwrite"});const folder=await dir.getDirectoryHandle("KJ-Clothing-Embroidery",{create:true});const df=await folder.getFileHandle("KJ-Clothing-Embroidery.dst",{create:true});const dw=await df.createWritable();await dw.write(dst);await dw.close();const ef=await folder.getFileHandle("KJ-Clothing-Embroidery.emb",{create:true});const ew=await ef.createWritable();await ew.write(JSON.stringify(emb,null,2));await ew.close();flashEmb("DST + EMB SAVED IN THE SAME FOLDER");return}catch(e){if(e.name==="AbortError")return;flashEmb("Folder save unavailable — downloading separately")} }
+    downloadBlob(new Blob([dst],{type:"application/octet-stream"}),"KJ-Clothing-Embroidery.dst");setTimeout(()=>downloadBlob(new Blob([JSON.stringify(emb,null,2)],{type:"application/octet-stream"}),"KJ-Clothing-Embroidery.emb"),250);flashEmb("DST + EMB DOWNLOADED")
+  }
+  E("embGenerate").onclick=()=>{saveCurrentLayout();embStitches=buildStitches();embUpdate();flashEmb("LAYOUT GENERATED • "+embStitches.length.toLocaleString()+" STITCHES")};
+  E("embDst").onclick=()=>{if(!embStitches.length)embStitches=buildStitches();downloadBlob(new Blob([writeDST(embStitches)],{type:"application/octet-stream"}),"KJ-Clothing-Embroidery.dst");flashEmb("DST FILE SAVED")};
+  E("embEmb").onclick=()=>{if(!embStitches.length)embStitches=buildStitches();const project={format:"EMB",version:"KJ Clothing Embroidery Project 2.0",layout:embLayout,name:E("embName").value.trim(),name2:E("embName2").value.trim(),size:E("embSize").value,placement:E("embPlacement").value,stitchType:E("embStitch").value,threadColor:embColorName,estimatedStitches:embStitches.length,stitches:embStitches,logoData:embLogoData||null,photoColor:embPhotoColor,photoTint:embPhotoTint,generatedAt:new Date().toISOString(),note:"Browser-generated embroidery project package. Native commercial EMB editing/digitizing requires a compatible embroidery digitizing application."};downloadBlob(new Blob([JSON.stringify(project,null,2)],{type:"application/octet-stream"}),"KJ-Clothing-Embroidery.emb");flashEmb("EMB PROJECT FILE SAVED")};
+  E("embSaveFolder").onclick=saveToFolder;
+
+  try{
+    const s=JSON.parse(localStorage.getItem(EMB_KEY)||"null");
+    if(s&&s.layouts){Object.assign(layouts.front,defaults(),s.layouts.front||{});Object.assign(layouts.back,defaults(),s.layouts.back||{});const g=s.global||{};if(g.size)E("embSize").value=g.size;if(g.placement)E("embPlacement").value=g.placement;if(g.stitch)E("embStitch").value=g.stitch}else if(s){Object.assign(layouts.front,defaults(),s);}
+  }catch(e){}
+  applyLayout(layouts.front);
+})();
+
+window.addEventListener("error",e=>{console.error("KJ Clothing error:",e.error||e.message)});
+window.addEventListener("unhandledrejection",e=>{console.error("KJ Clothing async error:",e.reason)});
+</script>
+</body>
+</html>
